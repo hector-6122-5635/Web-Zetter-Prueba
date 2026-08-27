@@ -1,0 +1,357 @@
+<meta charset="utf-8">
+<!-- ============================================================
+     ZETTER · Página "Precintos / Cinchos Indicativos"
+     Rediseño alineado a la guía de imagen corporativa v1.0
+     (paleta, tipografía Barlow y componentes de botones/tarjetas).
+
+     Reemplaza en Gutenberg:
+       1) El bloque de grupo "red-message" (Astra) de la parte alta.
+       2) El bloque "HTML personalizado" que traía la rejilla verde.
+     Este fragmento cubre ambos en un solo bloque "HTML personalizado".
+
+     Ninguna imagen fue sustituida: se conservan las URLs originales
+     del sitio (wp-content/uploads/...).
+     26 de agosto de 2026
+     ============================================================ -->
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;0,800;1,400&display=swap');
+
+.zds-precintos{
+  --verde-bosque:#1E3A2F;   /* Pantone 5605 C */
+  --verde:#2F5744;          /* Pantone 5477 C */
+  --verde-medio:#5C8770;    /* Pantone 5545 C */
+  --verde-claro:#A9C9B7;    /* Pantone 5635 C */
+  --negro:#0A0A0A;          /* Pantone Black C */
+  --plata:#B7B9BB;          /* Pantone 877 C */
+  --blanco:#FFFFFF;
+  --gris-claro:#F2F2F2;
+  --borde:#DDE0DF;
+  --texto-suave:#4A4F4C;
+  --texto-tenue:#6D7370;
+
+  --fuente:'Barlow',Arial,Helvetica,sans-serif;
+  --t-h1:clamp(2rem,5vw,3.25rem);
+  --t-h2:clamp(1.6rem,3.4vw,2.4rem);
+  --t-base:1rem;
+  --t-small:.88rem;
+  --t-micro:.78rem;
+
+  --radio:10px;
+  --esp-3:22px;
+  --esp-5:48px;
+  --sombra:0 10px 30px rgba(47,87,68,.13);
+
+  font-family:var(--fuente);
+  color:var(--negro);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+.zds-precintos *,.zds-precintos *::before,.zds-precintos *::after{box-sizing:border-box}
+.zds-precintos :where(h1,h2,h3,h4,p,ul,li,figure){margin:0;padding:0}
+.zds-precintos :where(ul){list-style:none}
+.zds-precintos :where(img){max-width:100%;height:auto;display:block}
+.zds-precintos :where(a){text-decoration:none;color:inherit;box-shadow:none}
+.zds-precintos :where(h1,h2,h3,h4){font-weight:800;line-height:1.15;letter-spacing:-.02em;color:var(--negro)}
+
+.zds-precintos-contenedor{max-width:1120px;margin:0 auto;padding:0 22px}
+
+/* ============================================================
+   BANDA DE INTRODUCCIÓN (reemplaza el bloque "red-message")
+   Reutiliza el patrón de --hero de la guía: fondo verde bosque,
+   texto blanco, subtítulo verde claro.
+   ============================================================ */
+.zds-p-intro{background:var(--verde-bosque);color:var(--blanco);padding:var(--esp-5) 0;
+  width:100vw;position:relative;left:50%;right:50%;margin-left:-50vw;margin-right:-50vw}
+.zds-p-intro .cols{display:grid;grid-template-columns:1fr 1.1fr;gap:var(--esp-5);align-items:center}
+.zds-p-intro .foto img{border-radius:var(--radio)}
+.zds-p-intro .eyebrow{display:block;font-size:var(--t-micro);font-weight:500;text-transform:uppercase;
+  letter-spacing:.14em;color:var(--verde-claro);margin-bottom:14px}
+.zds-p-intro h1{color:var(--blanco);font-size:var(--t-h1);margin-bottom:10px}
+.zds-p-intro h2{color:var(--verde-claro);font-weight:600;font-size:1.2rem;letter-spacing:0;margin-bottom:20px}
+.zds-p-intro ul{margin-bottom:28px}
+.zds-p-intro li{position:relative;padding-left:22px;color:var(--blanco);font-size:1rem;margin-bottom:10px}
+.zds-p-intro li::before{content:"";position:absolute;left:0;top:.55em;width:9px;height:9px;
+  border-radius:50%;background:var(--verde-claro)}
+
+/* ============ BOTONES (fieles a la guía de marca) ============ */
+.zds-precintos .btn{display:inline-block;background:var(--verde);color:var(--blanco);font-weight:800;
+  text-transform:uppercase;letter-spacing:.06em;font-size:.86rem;padding:13px 26px;border-radius:var(--radio);
+  border:0;cursor:pointer;text-align:center;transition:transform .12s ease,background .18s ease,color .18s ease}
+.zds-precintos .btn:hover{background:var(--verde-bosque);transform:translateY(-1px)}
+.zds-precintos .btn-claro{background:var(--verde-claro);color:var(--verde-bosque)}
+.zds-precintos .btn-claro:hover{background:var(--blanco);color:var(--verde-bosque)}
+.zds-precintos .btn-contorno{background:transparent;color:var(--blanco);border:2px solid var(--verde-claro)}
+.zds-precintos .btn-contorno:hover{background:var(--verde-claro);color:var(--verde-bosque)}
+.zds-precintos .btn-tenue{background:var(--gris-claro);color:var(--verde-bosque)}
+.zds-precintos .btn-tenue:hover{background:var(--verde-bosque);color:var(--blanco)}
+.zds-precintos .btn-lg{font-size:1rem;padding:17px 38px}
+
+/* ============================================================
+   SECCIONES / TÍTULOS (clases tomadas de la guía)
+   ============================================================ */
+.zds-precintos .zds-seccion{padding:clamp(44px,6vw,78px) 0}
+.zds-precintos .zds-alt{background:var(--gris-claro)}
+.zds-precintos .zds-titulo{font-size:clamp(1.5rem,3vw,2rem);margin-bottom:5px;text-align:center}
+.zds-precintos .zds-nota{font-size:var(--t-small);color:var(--texto-tenue);margin:0 auto var(--esp-5);
+  max-width:64ch;text-align:center}
+
+/* ============================================================
+   TARJETA DE PRODUCTO (grid de 8 modelos)
+   Basada en el componente de tarjeta de la guía: filete verde
+   medio a la izquierda, borde suave, radio 10px y el mismo
+   hover (sombra + elevación) que usa el índice de componentes.
+   ============================================================ */
+.zds-modelos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--esp-3)}
+.zds-modelo-card{background:var(--blanco);border:1px solid var(--borde);border-left:4px solid var(--verde-medio);
+  border-radius:var(--radio);overflow:hidden;transition:box-shadow .18s ease,transform .12s ease;
+  display:flex;flex-direction:column}
+.zds-modelo-card:hover{box-shadow:var(--sombra);transform:translateY(-2px)}
+.zds-modelo-card a{display:flex;flex-direction:column;height:100%}
+.zds-modelo-card img{width:100%;height:170px;object-fit:cover}
+.zds-modelo-content{padding:18px;flex:1;display:flex;flex-direction:column;gap:12px}
+.zds-modelo-content h3{font-size:.92rem;font-weight:600;color:var(--verde-bosque);line-height:1.3;flex:1}
+.zds-modelo-content p{font-size:.86rem;color:var(--texto-suave);line-height:1.5}
+.zds-modelo-content .btn{margin-top:auto;font-size:.76rem;padding:11px 18px}
+
+/* ============================================================
+   TARJETA SECUNDARIA (4 niveles de seguridad)
+   Mismo componente de tarjeta, con etiqueta de mínimo estilo
+   ".zds-d-label" de la guía.
+   ============================================================ */
+.zds-secundario-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--esp-3)}
+.zds-secundario-card{background:var(--blanco);border:1px solid var(--borde);border-left:4px solid var(--verde-medio);
+  border-radius:var(--radio);padding:26px;display:grid;grid-template-columns:120px 1fr;gap:20px}
+.zds-secundario-card img{width:120px;height:120px;object-fit:cover;border-radius:var(--radio)}
+.zds-secundario-card .txt{display:flex;flex-direction:column}
+.zds-secundario-card p{font-size:.92rem;color:var(--texto-suave);line-height:1.55;margin-bottom:12px}
+.zds-secundario-card .label{font-size:.76rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;
+  color:var(--verde);margin-bottom:14px}
+.zds-secundario-card .btn{align-self:flex-start;font-size:.78rem;padding:11px 20px}
+
+/* ============================================================
+   BANDA DE CIERRE (idéntica al componente ".cierre" de la guía)
+   ============================================================ */
+.zds-p-cierre{background:var(--verde);color:var(--blanco);text-align:center;border-radius:var(--radio);
+  padding:56px 26px}
+.zds-p-cierre h2{font-size:var(--t-h2);color:var(--blanco);margin-bottom:12px}
+.zds-p-cierre p{color:var(--verde-claro);max-width:52ch;margin:0 auto 30px;font-size:1.1rem}
+.zds-p-cierre .btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.zds-p-cierre .btns a{font-weight:800;text-transform:uppercase;letter-spacing:.06em;font-size:.86rem;
+  padding:13px 26px;border-radius:var(--radio)}
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width:1024px){
+  .zds-p-intro .cols{grid-template-columns:1fr;gap:28px}
+  .zds-p-intro .foto{max-width:420px}
+  .zds-modelos-grid{grid-template-columns:repeat(3,1fr);gap:16px}
+  .zds-secundario-grid{grid-template-columns:1fr}
+}
+
+@media (max-width:768px){
+  .zds-modelos-grid{grid-template-columns:repeat(2,1fr);gap:14px}
+  .zds-modelo-card img{height:150px}
+  .zds-secundario-card{grid-template-columns:96px 1fr;padding:20px;gap:16px}
+  .zds-secundario-card img{width:96px;height:96px}
+}
+
+@media (max-width:640px){
+  .zds-precintos-contenedor{padding:0 16px}
+  .zds-p-intro{padding:34px 0}
+  .zds-p-intro li{font-size:.94rem}
+  .zds-modelos-grid{grid-template-columns:1fr;gap:12px}
+  .zds-modelo-card img{height:180px}
+  .zds-secundario-card{grid-template-columns:1fr}
+  .zds-secundario-card img{width:100%;height:170px}
+  .zds-p-cierre{padding:40px 20px}
+}
+</style>
+
+<div class="zds-precintos">
+
+  <!-- ===== INTRODUCCIÓN ===== -->
+  <div class="zds-p-intro">
+    <div class="zds-precintos-contenedor cols">
+      <div class="foto">
+        <img src="https://precintosdeseguridad.mx/wp-content/uploads/2023/04/cinchos-indicartivos-foliados-3.png" alt="Precintos indicativos numerados Zetter">
+      </div>
+      <div class="copy">
+        <span class="eyebrow">Numeración consecutiva incluida</span>
+        <h1>Precintos / Cinchos Indicativos</h1>
+        <h2>Seguridad media, inyectados en una sola pieza</h2>
+        <ul>
+          <li>Fabricamos precintos indicativos de corredera fija y ajustables.</li>
+          <li>Algunos abren a mano. Sirven para emergencias.</li>
+          <li>Otros tienen dientes más agresivos. Resisten más jalón.</li>
+        </ul>
+        <a class="btn btn-claro btn-lg" href="#modelos">Ver modelos disponibles</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== MODELOS DISPONIBLES ===== -->
+  <section class="zds-seccion zds-alt" id="modelos">
+    <div class="zds-precintos-contenedor">
+      <h2 class="zds-titulo">Precintos numerados con entrega inmediata</h2>
+      <p class="zds-nota">Haz clic en el modelo que necesitas. Ahí ves precio por cantidad y color. El folio consecutivo va incluido en todos.</p>
+
+      <div class="zds-modelos-grid">
+
+        <div class="zds-modelo-card">
+          <a href="https://precintosdeseguridad.mx/precintos-indicativos/sellos-de-seguridad/">
+            <img src="https://precintosdeseguridad.mx/wp-content/uploads/2023/04/w-seal-cinchos-para-extintores.jpeg" alt="Modelo W-SEAL">
+            <div class="zds-modelo-content">
+              <h3>MODELO W-SEAL</h3>
+              <p>El folio va incluido en el precio, como en todos los indicativos.</p>
+              <span class="btn">Ver modelo</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="zds-modelo-card">
+          <a href="https://precintosdeseguridad.mx/precintos-indicativos/cinchos-plastico/">
+            <img src="https://precintosdeseguridad.mx/wp-content/uploads/2023/04/cincho-numerado-rompe-facil.jpeg" alt="Cinchos REVO">
+            <div class="zds-modelo-content">
+              <h3>CINCHOS REVO</h3>
+              <p>Se retiran rápido a mano. Ideales para emergencias.</p>
+              <span class="btn">Ver modelo</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="zds-modelo-card">
+          <a href="https://precintosdeseguridad.mx/precintos-indicativos/precintos-seguridad-guadalajara/">
+            <img src="https://precintosdeseguridad.mx/wp-content/uploads/2023/04/precinto-corredera-dentada-barracuda.jpeg" alt="Precintos BARRACUDA">
+            <div class="zds-modelo-content">
+              <h3>PRECINTOS BARRACUDA</h3>
+              <p>Inyectado en una sola pieza. Seguridad media.</p>
+              <span class="btn">Ver modelo</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="zds-modelo-card">
+          <a href="https://precintosdeseguridad.mx/precintos-indicativos/cintillo-seguridad-numerado/">
+            <img src="https://precintosdeseguridad.mx/wp-content/uploads/2023/04/cintillo-seguridad-numerado-extintores-botiquines.jpeg" alt="Cintillo de Seguridad">
+            <div class="zds-modelo-content">
+              <h3>CINTILLO DE SEGURIDAD</h3>
+              <p>Corredera dentada. Folio con letra y número. Modelo AWAS.</p>
+              <span class="btn">Ver modelo</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="zds-modelo-card">
+          <a href="https://precintosdeseguridad.mx/precintos-indicativos/precintos-numerados-seguridad/">
+            <img src="https://precintosdeseguridad.mx/wp-content/uploads/2023/04/precintos-numerados.jpeg" alt="Numerado Cocodrilo">
+            <div class="zds-modelo-content">
+              <h3>NUMERADO COCODRILO</h3>
+              <p>No hay dos precintos iguales. Seguridad media.</p>
+              <span class="btn">Ver modelo</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="zds-modelo-card">
+          <a href="https://precintosdeseguridad.mx/precintos-indicativos/precintos-seguridad-preventivos/">
+            <img src="https://precintosdeseguridad.mx/wp-content/uploads/2023/04/precintos-grandes-indicativos.jpeg" alt="Precinto BIG TAG">
+            <div class="zds-modelo-content">
+              <h3>PRECINTO BIG TAG</h3>
+              <p>Área de impresión grande para tu logo o folio.</p>
+              <span class="btn">Ver modelo</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="zds-modelo-card">
+          <a href="https://precintosdeseguridad.mx/precintos-indicativos/cinchos-seguridad-foliados/">
+            <img src="https://precintosdeseguridad.mx/wp-content/uploads/2023/04/precinto-seguridad-corredera-fija-numerado.jpeg" alt="Precinto Piraña">
+            <div class="zds-modelo-content">
+              <h3>PRECINTO PIRAÑA</h3>
+              <p>Numeración consecutiva incluida. Corredera fija.</p>
+              <span class="btn">Ver modelo</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="zds-modelo-card">
+          <a href="https://precintosdeseguridad.mx/precintos-indicativos/sellos-cajas-plastico/">
+            <img src="https://precintosdeseguridad.mx/wp-content/uploads/2023/04/sellos-para-cajas-plastico.jpeg" alt="Sello Contenedor">
+            <div class="zds-modelo-content">
+              <h3>SELLO CONTENEDOR</h3>
+              <p>Sella contenedores de plástico. Modelo Unibox.</p>
+              <span class="btn">Ver modelo</span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== OTROS NIVELES DE SEGURIDAD ===== -->
+  <section class="zds-seccion">
+    <div class="zds-precintos-contenedor">
+      <h2 class="zds-titulo">Precintos con otros niveles de seguridad</h2>
+      <p class="zds-nota">¿Tienes faltantes de inventario? Elige el nivel de seguridad que necesitas.</p>
+
+      <div class="zds-secundario-grid">
+
+        <div class="zds-secundario-card">
+          <img src="https://precintosdeseguridad.mx/wp-content/uploads/2023/05/sello-seguridad-medidores-relocko.jpeg" alt="Precintos de medición">
+          <div class="txt">
+            <p>Los llamamos precintos de medición. Los usamos en medidores, tanques y básculas.</p>
+            <span class="label">Mínimo 200 piezas</span>
+            <a href="https://precintosdeseguridad.mx/medicion/" class="btn btn-tenue">Ver precintos de medición</a>
+          </div>
+        </div>
+
+        <div class="zds-secundario-card">
+          <img src="https://precintosdeseguridad.mx/wp-content/uploads/2023/04/precinto-tipo-botella-contenedores-genius.jpeg" alt="Precinto tipo botella">
+          <div class="txt">
+            <p>Certificados para el programa C-TPAT. Los usamos en transporte de carga y exportación.</p>
+            <span class="label">Mínimo 100 piezas</span>
+            <a href="https://precintosdeseguridad.mx/alta-seguridad/" class="btn btn-tenue">Ver precinto tipo botella</a>
+          </div>
+        </div>
+
+        <div class="zds-secundario-card">
+          <img src="https://precintosdeseguridad.mx/wp-content/uploads/2023/04/precinto-para-prevencion-perdidas.jpeg" alt="Precintos con inserto">
+          <div class="txt">
+            <p>Llevan un inserto de seguridad en el cierre. Los hay ajustables y de corredera fija.</p>
+            <span class="label">Mínimo 200 piezas</span>
+            <a href="https://precintosdeseguridad.mx/inserto/" class="btn btn-tenue">Ver modelos y colores</a>
+          </div>
+        </div>
+
+        <div class="zds-secundario-card">
+          <img src="https://precintosdeseguridad.mx/wp-content/uploads/2023/04/calta-resistencia-cinchos-metalicos.jpeg" alt="Sellos de alta seguridad">
+          <div class="txt">
+            <p>De cable de acero, ajustables o de corredera fija. También de barril, en varias medidas.</p>
+            <span class="label">Mínimo 100 piezas</span>
+            <a href="https://precintosdeseguridad.mx/alta-seguridad/" class="btn btn-tenue">Ver sellos de alta seguridad</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CIERRE ===== -->
+  <section class="zds-seccion zds-alt">
+    <div class="zds-precintos-contenedor">
+      <div class="zds-p-cierre">
+        <h2>¿Cuántos precintos necesitas?</h2>
+        <p>Dinos cantidad y color. Te cotizamos el mismo día hábil.</p>
+        <div class="btns">
+          <a class="btn-contorno" href="tel:+523338125380">Llamar (33) 3812 5380</a>
+          <a class="btn-claro" href="#modelos">Pedir cotización</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
